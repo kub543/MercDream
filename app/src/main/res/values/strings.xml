@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">MercDream</string>
+    <string name="title_activity_aplication">AplicationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">MercDream</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="add_amount">add amount</string>
+    <string name="button2">Button</string>
+    <string name="add_">3000</string>
+    <string name="add_field">wpłać</string>
+    <string name="pln">PLN</string>
+    <string name="name_main">Mercedes S 600</string>
+    <string name="additional_name">W220</string>
+    <string name="capacity_enginee">5500 cm</string>
+    <string name="power_engine">500KM</string>
+    <string name="full_cost">100 000</string>
+    <string name="point_cost">100_000</string>
+    <string name="destination">Do celu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button">Button</string>
+    <string name="Piggy_list">Lista skarbonek</string>
+    <string name="history">Historia wpłat</string>
+    <string name="add_new_piggy">Dodaj nową skarbonkę</string>
+    <string name="zaloguj">zaloguj</string>
+    <string name="s600">S600</string>
+    <string name="nazwa_samochodu">Nazwa samochodu:</string>
+    <string name="cena_samochodu">Cena samochodu:</string>
+    <string name="_100000_00">100000.00</string>
+    <string name="dalej">Utwórz</string>
+
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
+    <string name="name">Name</string>
+    <string name="hasło">Hasło</string>
+    <string name="e_mail">e-mail</string>
+    <string name="utwórz">Utwórz</string>
+    <string name="add_new_piggy_to_form">Dodaj</string>
+    <string name="nie_zbierasz_jeszcze_na_adnego_mercedesa">Nie zbierasz jeszcze na żadnego mercedesa</string>
+
+</resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="formViewModel"
+            type="com.baszczyk.mercpiggibank3.form.FormViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/surnameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:ems="8"
+            android:text="@string/nazwa_samochodu"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/surnameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:autofillHints="@string/s600"
+            android:ems="6"
+            android:hint="@string/s600"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toEndOf="@+id/surnameText"
+            app:layout_constraintTop_toBottomOf="@+id/surnameText" />
+
+        <TextView
+            android:id="@+id/PriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/cena_samochodu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surnameInput" />
+
+        <EditText
+            android:id="@+id/PriceInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:autofillHints="@string/_100000_00"
+            android:ems="10"
+            android:hint="@string/_100000_00"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/surnameInput"
+            app:layout_constraintTop_toBottomOf="@+id/PriceText" />
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="clip_horizontal|center"
+            android:layout_marginBottom="16dp"
+            android:enabled="true"
+            android:text="@string/dalej"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/VersionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Version:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PriceInput" />
+
+        <EditText
+            android:id="@+id/VersionInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="6"
+            android:hint="w220"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/PriceInput"
+            app:layout_constraintTop_toBottomOf="@+id/VersionText" />
+
+        <TextView
+            android:id="@+id/EngineCapacityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Pojemność:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/VersionInput" />
+
+        <EditText
+            android:id="@+id/engineCapacityInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="6"
+            android:hint="5.000"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/VersionInput"
+            app:layout_constraintTop_toBottomOf="@+id/EngineCapacityText" />
+
+        <TextView
+            android:id="@+id/enginePowerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text=" Moc silnika:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/engineCapacityInput" />
+
+        <EditText
+            android:id="@+id/enginePowerInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="4"
+            android:hint="200"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/engineCapacityInput"
+            app:layout_constraintTop_toBottomOf="@+id/enginePowerText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

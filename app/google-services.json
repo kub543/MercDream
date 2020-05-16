@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "221343293659",
+    "firebase_url": "https://mercdream-3c6da.firebaseio.com",
+    "project_id": "mercdream-3c6da",
+    "storage_bucket": "mercdream-3c6da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221343293659:android:18a7cac2d37ef046a92cfe",
+        "android_client_info": {
+          "package_name": "com.baszczyk.mercpiggibank3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221343293659-bsn81ss9cetep59u3o32k5d4v30poan6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.baszczyk.mercpiggibank3",
+            "certificate_hash": "77fa9f7938956642c316f4a47b89c8f3a95246f0"
+          }
+        },
+        {
+          "client_id": "221343293659-b01q4qhe0fpp450mnp64bem0ln149r6c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGVVX5h3EP2UvFuasTo3zS5Q9mCzAkgAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221343293659-b01q4qhe0fpp450mnp64bem0ln149r6c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

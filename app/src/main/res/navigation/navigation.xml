@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loggingFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.baszczyk.mercpiggibank3.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.baszczyk.mercpiggibank3.form.FormFragment"
+        android:label="FormFragment" >
+        <action
+            android:id="@+id/action_formFragment_to_piggiBankFragment"
+            app:destination="@id/piggiBankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hystoryFragment"
+        android:name="com.baszczyk.mercpiggibank3.History.HystoryFragment"
+        android:label="HystoryFragment" />
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.baszczyk.mercpiggibank3.main.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_piggiBankFragment"
+            app:destination="@id/piggiBankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loggingFragment"
+        android:name="com.baszczyk.mercpiggibank3.logging.LoggingFragment"
+        android:label="fragment_logging"
+        tools:layout="@layout/fragment_logging" >
+        <action
+            android:id="@+id/action_loggingFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_loggingFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_loggingFragment_to_addNewUser"
+            app:destination="@id/addNewUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/piggiBankFragment"
+        android:name="com.baszczyk.mercpiggibank3.Piggi.PiggiBankFragment"
+        android:label="PiggiBankFragment" />
+    <fragment
+        android:id="@+id/addNewUser"
+        android:name="com.baszczyk.mercpiggibank3.add_user.AddNewUser"
+        android:label="addNewUser" >
+        <action
+            android:id="@+id/action_addNewUser_to_loggingFragment"
+            app:destination="@id/loggingFragment" />
+    </fragment>
+
+</navigation>

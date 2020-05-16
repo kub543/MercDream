@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/piggyList"
+        android:title="@string/Piggy_list" />
+    <item
+        android:id="@+id/history"
+        android:title="@string/history" />
+    <item
+        android:id="@+id/addNewPiggy"
+        android:title="@string/add_new_piggy" />
+</menu>

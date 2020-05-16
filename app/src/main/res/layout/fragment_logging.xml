@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".logging.LoggingFragment">
+
+        <Button
+            android:id="@+id/loggingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:enabled="false"
+            android:orientation="vertical"
+            android:text="@string/zaloguj"
+            app:layout_constraintBottom_toTopOf="@+id/new_user_button"
+            app:layout_constraintEnd_toEndOf="@+id/userPassword"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/userPassword" />
+
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Login"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/userPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/userPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="116dp"
+            android:ems="10"
+            android:hint="Hasło"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/loggingButton"
+            app:layout_constraintEnd_toEndOf="@+id/userName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/userName" />
+
+        <Button
+            android:id="@+id/new_user_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="224dp"
+            android:text="Nowe Konto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/loggingButton"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="@+id/loggingButton" />
+
+        <TextView
+            android:id="@+id/wrong_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/userName"
+            app:layout_constraintEnd_toEndOf="@+id/userName"
+            app:layout_constraintStart_toStartOf="@+id/userName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

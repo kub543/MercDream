@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="addNewUserViewModel"-->
+<!--            type="com.baszczyk.mercpiggibank3.add_user.AddNewUserViewModel" />-->
+<!--    </data>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".add_user.AddNewUser">
+
+
+        <EditText
+            android:id="@+id/newUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/newUserPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/hasło"
+            android:inputType="numberPassword"
+            app:layout_constraintEnd_toEndOf="@+id/newUserName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/newUserName"
+            app:layout_constraintTop_toBottomOf="@+id/newUserName"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/addNewUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/e_mail"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="@+id/newUserPassword"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/newUserPassword"
+            app:layout_constraintTop_toBottomOf="@+id/newUserPassword"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/button_create_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/utwórz"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/addNewUserEmail"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/addNewUserEmail"
+            app:layout_constraintTop_toBottomOf="@+id/addNewUserEmail"
+            app:layout_constraintVertical_bias="0.269" />
+<!--            android:onClick="@{() -> addNewUserViewModel.database}"-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
