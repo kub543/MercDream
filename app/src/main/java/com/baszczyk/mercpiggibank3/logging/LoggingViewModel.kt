@@ -3,9 +3,8 @@ package com.baszczyk.mercpiggibank3.logging
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.database.PiggyDatabaseDao
-import com.baszczyk.mercpiggibank3.database.User
+import com.baszczyk.mercpiggibank3.database.entities.User
 import kotlinx.coroutines.*
 
 class LoggingViewModel(val database: PiggyDatabaseDao,
@@ -37,20 +36,7 @@ class LoggingViewModel(val database: PiggyDatabaseDao,
 
 
 
-    lateinit var piggies: List<Long?>
 
-    fun getAllPiggies(userId: Long){
-        uiScope.launch {
-            piggies = allPiggies(userId)
-        }
-    }
-
-    private suspend fun allPiggies(userId: Long):List<Long?>{
-        return withContext(Dispatchers.IO){
-            val piggie = database.getPiggyId(userId)
-            piggie
-        }
-    }
 
 
 

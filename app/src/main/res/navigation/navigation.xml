@@ -3,66 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loggingFragment">
+    app:startDestination="@id/listFragment">
 
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.baszczyk.mercpiggibank3.main.MainFragment"
-        android:label="MainFragment" >
-        <action
-            android:id="@+id/action_mainFragment_to_formFragment"
-            app:destination="@id/formFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/formFragment"
         android:name="com.baszczyk.mercpiggibank3.form.FormFragment"
-        android:label="FormFragment" >
+        android:label="Tworzenie nowej Skarbonki" >
         <action
-            android:id="@+id/action_formFragment_to_piggiBankFragment"
-            app:destination="@id/piggiBankFragment" />
+            android:id="@+id/action_formFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
     </fragment>
     <fragment
-        android:id="@+id/hystoryFragment"
-        android:name="com.baszczyk.mercpiggibank3.History.HystoryFragment"
-        android:label="HystoryFragment" />
+        android:id="@+id/historyFragment"
+        android:name="com.baszczyk.mercpiggibank3.history.HistoryFragment"
+        android:label="Historia wpłat" />
     <fragment
         android:id="@+id/listFragment"
         android:name="com.baszczyk.mercpiggibank3.main.ListFragment"
-        android:label="fragment_list"
+        android:label="Twoje Skarbonki"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_formFragment"
-            app:destination="@id/formFragment" />
+            app:destination="@id/formFragment"
+            app:popUpTo="@id/formFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_listFragment_to_piggiBankFragment"
-            app:destination="@id/piggiBankFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loggingFragment"
-        android:name="com.baszczyk.mercpiggibank3.logging.LoggingFragment"
-        android:label="fragment_logging"
-        tools:layout="@layout/fragment_logging" >
-        <action
-            android:id="@+id/action_loggingFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
-            android:id="@+id/action_loggingFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_loggingFragment_to_addNewUser"
-            app:destination="@id/addNewUser" />
+            app:destination="@id/piggiBankFragment"
+            app:popUpTo="@id/piggiBankFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/piggiBankFragment"
-        android:name="com.baszczyk.mercpiggibank3.Piggi.PiggiBankFragment"
-        android:label="PiggiBankFragment" />
-    <fragment
-        android:id="@+id/addNewUser"
-        android:name="com.baszczyk.mercpiggibank3.add_user.AddNewUser"
-        android:label="addNewUser" >
+        android:name="com.baszczyk.mercpiggibank3.piggy.PiggiBankFragment"
+        android:label="Wrzuć do Skarbonki" >
+        <argument
+            android:name="piggyId"
+            app:argType="long" />
         <action
-            android:id="@+id/action_addNewUser_to_loggingFragment"
-            app:destination="@id/loggingFragment" />
+            android:id="@+id/action_piggiBankFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:popUpTo="@id/piggiBankFragment"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_piggiBankFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="false"/>
     </fragment>
+
 
 </navigation>

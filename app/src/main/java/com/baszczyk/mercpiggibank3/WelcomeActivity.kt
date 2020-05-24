@@ -23,7 +23,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         Handler().postDelayed({startActivity(
             Intent(this,
-            MainActivity::class.java)
+            LoggingActivity::class.java)
         )
             finish()
         }, SPLASH_TIME_OUT)

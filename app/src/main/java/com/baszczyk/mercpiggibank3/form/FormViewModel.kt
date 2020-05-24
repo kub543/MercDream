@@ -3,8 +3,8 @@ package com.baszczyk.mercpiggibank3.form
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.baszczyk.mercpiggibank3.database.Mercedes
-import com.baszczyk.mercpiggibank3.database.PiggyBank
+import com.baszczyk.mercpiggibank3.database.entities.Mercedes
+import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
 import com.baszczyk.mercpiggibank3.database.PiggyDatabaseDao
 import kotlinx.coroutines.*
 

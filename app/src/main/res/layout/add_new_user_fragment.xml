@@ -67,7 +67,9 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/addNewUserEmail"
             app:layout_constraintTop_toBottomOf="@+id/addNewUserEmail"
-            app:layout_constraintVertical_bias="0.269" />
+            app:layout_constraintVertical_bias="0.269"
+            android:background="@drawable/round_button"
+            android:alpha="0.8"/>
 <!--            android:onClick="@{() -> addNewUserViewModel.database}"-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

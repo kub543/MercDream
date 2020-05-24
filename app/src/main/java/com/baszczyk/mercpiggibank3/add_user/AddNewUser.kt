@@ -13,13 +13,11 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
-import com.baszczyk.mercpiggibank3.database.User
+import com.baszczyk.mercpiggibank3.database.entities.User
 import com.baszczyk.mercpiggibank3.databinding.AddNewUserFragmentBinding
 import kotlinx.android.synthetic.main.add_new_user_fragment.*
-import kotlinx.android.synthetic.main.fragment_logging.*
 
 class AddNewUser : Fragment() {
 
@@ -30,13 +28,9 @@ class AddNewUser : Fragment() {
     private lateinit var addNewUserEmail: EditText
 
     private val textWatcher = object : TextWatcher {
-        override fun afterTextChanged(s: Editable?) {
+        override fun afterTextChanged(s: Editable?) {}
 
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-        }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             val addNewUserInput = addNewUser.text.toString().trim()
@@ -46,18 +40,15 @@ class AddNewUser : Fragment() {
             button_create_user.isEnabled = addNewUserInput.isNotEmpty()
                     && addNewUserPasswordInput.isNotEmpty() && addNewUserEmailInput.isNotEmpty()
         }
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = DataBindingUtil.inflate<AddNewUserFragmentBinding>(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.add_new_user_fragment, container, false
         )
-
         addNewUser = binding.newUserName
         addNewUserEmail = binding.addNewUserEmail
         addNewUserPassword = binding.newUserPassword
@@ -70,36 +61,38 @@ class AddNewUser : Fragment() {
         val dataSource = PiggyDatabase.getInstance(application).piggyDatabaseDao
         val viewModelFactory = AddNewUserFactory(dataSource, application)
 
+        //binding.addNewUserViewModel = viewModel
+
         viewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(AddNewUserViewModel::class.java)
 
-        //binding.addNewUserViewModel = viewModel
-
-
         binding.buttonCreateUser.setOnClickListener { view: View ->
-
             addNewUser = binding.newUserName
             addNewUserPassword = binding.newUserPassword
             addNewUserEmail = binding.addNewUserEmail
 
-            val user = User(name = addNewUser.text.toString(),
-                            password = addNewUserPassword.text.toString(),
-                            email = addNewUserEmail.text.toString())
+            viewModel.addNewUser(createNewUser())
+            viewModel.getNewUser()
 
-                viewModel.addNewUser(user)
-                viewModel.getNewUser()
+            Handler().postDelayed({
+                Toast.makeText(
+                    this.context, "dodano urzytkownika ${viewModel.currentUser.value?.name}",
+                    Toast.LENGTH_LONG
+                ).show()
+                view.findNavController().navigate(R.id.action_addNewUser_to_loggingFragment)
+            }, 500)
 
-                Handler().postDelayed({
-                    Toast.makeText(
-                        this.context, "dodano urzytkownika ${viewModel.currentUser.value?.name}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    view.findNavController().navigate(R.id.action_addNewUser_to_loggingFragment)
-                }, 500)
-
-            }
+        }
 
         return binding.root
+    }
+
+    private fun createNewUser(): User {
+       return User(
+            name = addNewUser.text.toString(),
+            password = addNewUserPassword.text.toString(),
+            email = addNewUserEmail.text.toString()
+        )
     }
 
     }

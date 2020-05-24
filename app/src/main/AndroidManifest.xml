@@ -10,11 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirebaseUIActivity"  />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".LoggingActivity"
+            android:screenOrientation="nosensor"/>
+        <activity android:name=".FirebaseUIActivity"
+            android:screenOrientation="nosensor"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="nosensor"/>
         <activity
             android:name=".WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

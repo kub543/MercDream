@@ -1,11 +1,11 @@
 package com.baszczyk.mercpiggibank3.database
 
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Query
+import com.baszczyk.mercpiggibank3.database.entities.Deposit
+import com.baszczyk.mercpiggibank3.database.entities.Mercedes
+import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
+import com.baszczyk.mercpiggibank3.database.entities.User
 
 @Dao
 interface PiggyDatabaseDao {
@@ -21,7 +21,10 @@ interface PiggyDatabaseDao {
     @Query("SELECT mercedes_id FROM mercedes ORDER BY mercedes_id DESC LIMIT 1")
     fun getMercedesId(): Long?
 
-    @Query("SELECT * FROM piggy WHERE user_id = :userId")
+    @Query("SELECT * FROM mercedes WHERE mercedes_id = :id")
+    fun getMercedes(id: Long): Mercedes
+
+    @Query("SELECT * FROM piggy WHERE user_id = :userId ORDER BY piggy_id DESC")
     fun getAllPiggies(userId: Long): List<PiggyBank>
 
     @Query("SELECT * FROM user ORDER BY user_id DESC LIMIT 1")
@@ -38,4 +41,19 @@ interface PiggyDatabaseDao {
 
     @Query("SELECT user FROM user")
     fun getAllUsersName(): List<String>
+
+    @Query("SELECT * FROM piggy WHERE piggy_id = :id")
+    fun getPiggy(id: Long): PiggyBank
+
+    @Query("UPDATE piggy SET actual_amount = :amount WHERE piggy_id = :id")
+    fun updatePiggyBank(amount: Double, id: Long)
+
+    @Query("SELECT * FROM deposit WHERE mercedes_id = :id")
+    fun getAllDepositsForCurrentPiggy(id: Long): List<Deposit>
+
+    @Query("SELECT * FROM deposit WHERE user_id = :id")
+    fun getAllDepositsForCurrentUser(id: Long): List<Deposit>
+
+    @Query("DELETE FROM piggy WHERE piggy_id = :id")
+    fun deletePiggy(id: Long)
 }

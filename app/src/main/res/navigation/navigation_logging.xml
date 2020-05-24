@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_logging"
+    app:startDestination="@id/loggingFragment">
+
+    <fragment
+        android:id="@+id/loggingFragment"
+        android:name="com.baszczyk.mercpiggibank3.logging.LoggingFragment"
+        android:label="LoggingFragment" >
+        <action
+            android:id="@+id/action_loggingFragment_to_addNewUser"
+            app:destination="@id/addNewUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewUser"
+        android:name="com.baszczyk.mercpiggibank3.add_user.AddNewUser"
+        android:label="AddNewUser" >
+        <action
+            android:id="@+id/action_addNewUser_to_loggingFragment"
+            app:destination="@id/loggingFragment" />
+    </fragment>
+</navigation>

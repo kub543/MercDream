@@ -12,7 +12,9 @@
             android:id="@+id/loggingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="32dp"
+            android:alpha="0.8"
+            android:background="@drawable/round_button"
             android:enabled="false"
             android:orientation="vertical"
             android:text="@string/zaloguj"
@@ -25,18 +27,20 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
             android:ems="10"
             android:hint="Login"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/userPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/userPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="116dp"
+            android:layout_marginBottom="60dp"
             android:ems="10"
             android:hint="Hasło"
             android:inputType="textPersonName"
@@ -49,12 +53,14 @@
             android:id="@+id/new_user_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="224dp"
+            android:layout_marginBottom="188dp"
+            android:background="@drawable/round_button"
             android:text="Nowe Konto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/loggingButton"
-            app:layout_constraintHorizontal_bias="0.468"
-            app:layout_constraintStart_toStartOf="@+id/loggingButton" />
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="@+id/loggingButton"
+            android:alpha="0.8"/>
 
         <TextView
             android:id="@+id/wrong_date"

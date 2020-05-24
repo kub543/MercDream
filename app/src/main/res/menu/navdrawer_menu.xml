@@ -2,12 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/piggyList"
+        android:id="@+id/listFragment"
+        android:icon="@android:drawable/ic_dialog_dialer"
         android:title="@string/Piggy_list" />
     <item
-        android:id="@+id/history"
+        android:id="@+id/historyFragment"
+        android:icon="@android:drawable/ic_menu_save"
         android:title="@string/history" />
     <item
-        android:id="@+id/addNewPiggy"
+        android:id="@+id/formFragment"
+        android:icon="@android:drawable/ic_input_add"
         android:title="@string/add_new_piggy" />
+    <item
+        android:id="@+id/log_out"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/wyloguj" />
 </menu>

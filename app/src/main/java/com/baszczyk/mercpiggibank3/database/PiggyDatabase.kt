@@ -4,8 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.baszczyk.mercpiggibank3.database.entities.Deposit
+import com.baszczyk.mercpiggibank3.database.entities.Mercedes
+import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
+import com.baszczyk.mercpiggibank3.database.entities.User
 
-@Database(entities = [PiggyBank::class, Mercedes::class, Deposit::class, User::class], version = 7,
+@Database(entities = [PiggyBank::class, Mercedes::class, Deposit::class, User::class], version = 14,
             exportSchema = false)
 abstract class PiggyDatabase : RoomDatabase() {
     abstract val piggyDatabaseDao: PiggyDatabaseDao

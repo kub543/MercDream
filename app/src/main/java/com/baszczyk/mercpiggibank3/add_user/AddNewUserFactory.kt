@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.baszczyk.mercpiggibank3.database.PiggyDatabaseDao
-import com.baszczyk.mercpiggibank3.form.FormViewModel
 
 class AddNewUserFactory(private val dataSource: PiggyDatabaseDao,
 private val application: Application) : ViewModelProvider.Factory {

@@ -18,7 +18,7 @@
     <string name="add_">3000</string>
     <string name="add_field">wpłać</string>
     <string name="pln">PLN</string>
-    <string name="name_main">Mercedes S 600</string>
+    <string name="name_main">S 600</string>
     <string name="additional_name">W220</string>
     <string name="capacity_enginee">5500 cm</string>
     <string name="power_engine">500KM</string>
@@ -48,5 +48,7 @@
     <string name="utwórz">Utwórz</string>
     <string name="add_new_piggy_to_form">Dodaj</string>
     <string name="nie_zbierasz_jeszcze_na_adnego_mercedesa">Nie zbierasz jeszcze na żadnego mercedesa</string>
+    <string name="wyloguj">Wyloguj</string>
+    <string name="dodaj">Wpłać</string>
 
 </resources>

@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:context=".FormFragment">
 
         <TextView
             android:id="@+id/surnameText"
@@ -74,7 +75,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:visibility="visible" />
+
+            android:background="@drawable/round_button"
+            android:alpha="0.8"/>
 
         <TextView
             android:id="@+id/VersionText"

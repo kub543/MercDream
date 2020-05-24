@@ -1,4 +1,4 @@
-package com.baszczyk.mercpiggibank3.More
+package com.baszczyk.mercpiggibank3.more
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
