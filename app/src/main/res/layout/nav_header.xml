@@ -7,6 +7,7 @@
     android:background="@drawable/side_nav_bar"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
     <ImageView
         android:id="@+id/navHeaderImage"
         android:layout_width="0dp"

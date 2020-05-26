@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
@@ -48,52 +46,46 @@ class ListFragment : Fragment() {
         val currentUserId = activity?.intent?.extras?.get("id").toString().toLong()
         listViewModel.allPiggies(currentUserId)
 
+        binding.fab.setOnClickListener { view: View ->
+            view.findNavController().navigate(
+                ListFragmentDirections.actionListFragmentToFormFragment())
+        }
+
         Handler().postDelayed({
-            if (listViewModel.piggies.value?.isEmpty()!!) {
-                binding.withoutPiggies.visibility = View.VISIBLE
-                binding.addNewPiggyButton.setOnClickListener {view: View ->
-                    view.findNavController().navigate(
-                        ListFragmentDirections.actionListFragmentToFormFragment())
-                }
-            } else {
-                binding.fab.setOnClickListener { view: View ->
-                    view.findNavController().navigate(
-                        ListFragmentDirections.actionListFragmentToFormFragment()
-                    )
-                }
+                    if (listViewModel.piggies.value?.isEmpty()!!) {
+                        binding.withoutPiggies.visibility = View.VISIBLE
+                        binding.addNewPiggyButton.setOnClickListener { view: View ->
+                            view.findNavController().navigate(
+                                ListFragmentDirections.actionListFragmentToFormFragment()
+                            )
+                        }
+                    } else {
 
-//        listViewModel.piggies.observe(viewLifecycleOwner, Observer {
-//            it?.let {
-//                adapter.data = it
-//            }
-//        })
+                        listViewModel.piggies.observe(viewLifecycleOwner, Observer {
+                            it?.let {
+                                adapter.submitList(it)
+                            }
+                        })
+                        binding.lifecycleOwner = this
 
-                listViewModel.piggies.observe(viewLifecycleOwner, Observer {
-                    it?.let {
-                        adapter.submitList(it)
+                        listViewModel.navigateToPiggyDetails.observe(this, Observer { piggy ->
+                            piggy?.let {
+                                this.findNavController().navigate(
+                                    ListFragmentDirections.actionListFragmentToPiggiBankFragment(
+                                        piggy
+                                    )
+                                )
+                                listViewModel.onPiggyDetailNavigated()
+                            }
+                        })
+
+                        val manager = GridLayoutManager(
+                            activity, 2,
+                            GridLayoutManager.VERTICAL, false
+                        )
+                        binding.piggyList.layoutManager = manager
                     }
-                })
-                binding.lifecycleOwner = this
-
-                listViewModel.navigateToPiggyDetails.observe(this, Observer { piggy ->
-                    piggy?.let {
-                        this.findNavController().navigate(
-                            ListFragmentDirections.actionListFragmentToPiggiBankFragment(piggy))
-                        listViewModel.onPiggyDetailNavigated()
-                    }
-                })
-
-
-                val manager = GridLayoutManager(
-                    activity, 2,
-                    GridLayoutManager.VERTICAL, false
-                )
-                binding.piggyList.layoutManager = manager
-            }
         }, 500)
-
-
-
 
         return binding.root
     }

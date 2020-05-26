@@ -11,7 +11,6 @@ fun TextView.setPiggyDurationFormatted(item: PiggyBank) {
     }
 }
 
-
 @BindingAdapter("piggyQualityString")
 fun TextView.setPiggyQualityString(item: PiggyBank) {
     item?.let {

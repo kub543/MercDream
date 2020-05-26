@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baszczyk.mercpiggibank3.database.entities.Deposit
 import com.baszczyk.mercpiggibank3.databinding.DeposiItemViewBinding
 
-
 class DepositAdapter : ListAdapter<Deposit, DepositAdapter.ViewHolder>(DepositDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,17 +36,13 @@ class DepositAdapter : ListAdapter<Deposit, DepositAdapter.ViewHolder>(DepositDi
     }
 }
 
-
 class DepositDiffCallback : DiffUtil.ItemCallback<Deposit>() {
 
     override fun areItemsTheSame(oldItem: Deposit, newItem: Deposit): Boolean {
         return oldItem.depositId == newItem.depositId
     }
 
-
     override fun areContentsTheSame(oldItem: Deposit, newItem: Deposit): Boolean {
         return oldItem == newItem
     }
-
-
 }

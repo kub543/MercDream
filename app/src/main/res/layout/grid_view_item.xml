@@ -1,0 +1,19 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="photo"
+            type="com.baszczyk.mercpiggibank3.network.MercedesPhoto" />
+    </data>
+
+    <ImageView
+        android:id="@+id/mercedes_image"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:padding="2dp"
+        app:imageUrl="@{photo.imgSrcUrl}"
+        tools:src="@tools:sample/backgrounds/scenic"/>
+</layout>

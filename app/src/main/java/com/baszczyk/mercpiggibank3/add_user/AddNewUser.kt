@@ -94,6 +94,5 @@ class AddNewUser : Fragment() {
             email = addNewUserEmail.text.toString()
         )
     }
-
-    }
+}
 

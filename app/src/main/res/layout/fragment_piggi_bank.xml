@@ -35,7 +35,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/additional_name"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/name_car"
             app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="@+id/name_car"
@@ -48,6 +48,7 @@
             android:layout_marginTop="28dp"
             android:layout_marginEnd="20dp"
             android:text="@string/capacity_enginee"
+            android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/name_car"
             app:layout_constraintTop_toBottomOf="@+id/version_number" />
 
@@ -58,6 +59,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="28dp"
             android:text="@string/power_engine"
+            android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/name_car"
             app:layout_constraintTop_toBottomOf="@+id/version_number" />
 
@@ -65,11 +67,10 @@
             android:id="@+id/nominal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="36dp"
             android:text="@string/pln"
             app:layout_constraintBottom_toBottomOf="@+id/actual_price"
-            app:layout_constraintEnd_toEndOf="@+id/power_enginee"
-            app:layout_constraintTop_toTopOf="@+id/actual_price" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/add_to_pigge"
@@ -88,35 +89,32 @@
             android:background="@drawable/side_nav_bar"
             android:text="@string/dodaj"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/input_amount"
-            app:layout_constraintHorizontal_bias="0.398"
-            app:layout_constraintStart_toStartOf="@+id/input_amount" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/input_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
+            android:layout_marginTop="64dp"
             android:ems="10"
             android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/add_deposit_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.203"
+            app:layout_constraintHorizontal_bias="0.184"
             app:layout_constraintStart_toEndOf="@+id/add_to_pigge"
-            app:layout_constraintTop_toBottomOf="@+id/actual_price"
-            app:layout_constraintVertical_bias="0.271" />
+            app:layout_constraintTop_toBottomOf="@+id/actual_price" />
 
         <TextView
             android:id="@+id/actual_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="268dp"
+            android:layout_marginTop="200dp"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/point_cost"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.205"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/nominal"
+            app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/version_number" />
 
@@ -124,12 +122,9 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
             android:text="@string/destination"
             app:layout_constraintBottom_toBottomOf="@+id/actual_price"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/actual_price"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/constant_text_Mercedes"
@@ -139,7 +134,20 @@
             android:textSize="24sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/name_car"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.218"
+            app:layout_constraintHorizontal_bias="0.156"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/piggy_picture"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:layout_marginBottom="242dp"
+            android:alpha="0.7"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/piggy"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

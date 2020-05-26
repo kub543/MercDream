@@ -11,7 +11,6 @@ fun TextView.setDepositDurationFormatted(item: Deposit) {
     }
 }
 
-
 @BindingAdapter("depositQualityString")
 fun TextView.setDepositQualityString(item: Deposit) {
     item?.let {

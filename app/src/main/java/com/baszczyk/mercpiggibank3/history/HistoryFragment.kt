@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.baszczyk.mercpiggibank3.MainActivity
-
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentHistoryBinding

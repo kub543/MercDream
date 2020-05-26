@@ -9,6 +9,4 @@ data class User(@PrimaryKey(autoGenerate = true)
                 @ColumnInfo(name = "user_id") var userId: Long = 0L,
                 @ColumnInfo(name = "user")val name: String,
                 @ColumnInfo(name = "password")val password: String,
-                @ColumnInfo(name = "email")val email: String) {
-
-}
+                @ColumnInfo(name = "email")val email: String)

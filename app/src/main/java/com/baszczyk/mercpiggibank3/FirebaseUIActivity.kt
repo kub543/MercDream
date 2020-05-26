@@ -16,8 +16,6 @@ class FirebaseUIActivity : AppCompatActivity() {
     }
 
     private fun createSignInIntent() {
-        // [START auth_fui_create_intent]
-        // Choose authentication providers
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.PhoneBuilder().build(),
@@ -30,7 +28,6 @@ class FirebaseUIActivity : AppCompatActivity() {
                         .setAvailableProviders(providers)
                         .build(),
             RC_SIGN_IN)
-        // [END auth_fui_create_intent]
 }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -40,18 +37,15 @@ class FirebaseUIActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
-                // Successfully signed in
+
                 val user = FirebaseAuth.getInstance().currentUser
-                // ...
+
             } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+
             }
         }
     }
-    // [END auth_fui_result]
+
 
     private fun signOut() {
         // [START auth_fui_signout]

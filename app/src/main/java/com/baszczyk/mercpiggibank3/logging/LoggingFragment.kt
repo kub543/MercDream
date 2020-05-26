@@ -37,7 +37,6 @@ class LoggingFragment : Fragment() {
 
             loggingButton.isEnabled = userInputName.isNotEmpty() && userInputPassword.isNotEmpty()
         }
-
     }
 
     override fun onCreateView(
@@ -81,12 +80,12 @@ class LoggingFragment : Fragment() {
                                     putExtra("id", userId)
                                 }
                                 activity?.startActivity(intent)
-                            }, 50)
+                            }, 500)
 
                     } else {
                         binding.wrongDate.text = "niepoprawne hasło"
                     }
-                }, 50)
+                }, 500)
 
             } else {
                 view.findNavController().navigate(R.id.action_loggingFragment_to_addNewUser)

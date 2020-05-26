@@ -1,6 +1,10 @@
 package com.baszczyk.mercpiggibank3.form
 
 import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -74,10 +78,19 @@ class FormFragment : Fragment() {
                     showDialog()
                     view.findNavController().navigate(
                         FormFragmentDirections.actionFormFragmentToListFragment())
-                }, 50)
-            }, 50)
+                }, 500)
+            }, 500)
 
         }
+
+//        val notificationManager = ContextCompat.getSystemService(
+//            app,
+//            NotificationManager::class.java
+//        ) as NotificationManager
+//        notificationManager.sendNotification(app.getString(R.string.timer_running), app)
+//        createChannel(getString(R.string.piggy_notification_channel_id),
+//                        getString(R.string.piggy_notification_channel_name))
+
         return binding.root
     }
 
@@ -113,4 +126,23 @@ class FormFragment : Fragment() {
         dialog?.show()
     }
 
+    private fun createChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_LOW
+            )
+
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.RED
+            notificationChannel.enableVibration(true)
+            notificationChannel.description = "Właśnie utworzyłeś nową skarbonkę, możesz coś do niej wrzucić"
+
+            val notificationManager = requireActivity().getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+    }
 }

@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
@@ -43,8 +44,9 @@ class PiggiBankFragment : Fragment() {
         piggyBankViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(PiggyBankViewModel::class.java)
 
-
         binding.piggyBankViewModel = piggyBankViewModel
+
+        binding.inputAmount.requestFocus()
 
         val args = PiggiBankFragmentArgs.fromBundle(requireArguments())
         val piggyId = args.piggyId
@@ -68,12 +70,13 @@ class PiggiBankFragment : Fragment() {
             }
 
             if (piggy.actualAmount <= 0.0) {
-                binding.inputAmount.visibility = View.GONE
+                binding.inputAmount.visibility = View.INVISIBLE
+                binding.piggyPicture.visibility = View.VISIBLE
             }
 
-        }, 50)
+        }, 500)
 
-        }, 50)
+        }, 500)
 
         binding.addDepositButton.setOnClickListener {
            val dateTime = getCurrentDateTime().toString()
@@ -83,7 +86,10 @@ class PiggiBankFragment : Fragment() {
 
             if(actualAmount <= 0.0) {
                 showCongratulationAlert()
-                getSound()
+                getSound(R.raw.sound)
+            } else {
+                //source: salamisound.com
+                getSound(R.raw.money)
             }
 
             piggyBankViewModel.addDeposit(
@@ -96,10 +102,23 @@ class PiggiBankFragment : Fragment() {
             piggyBankViewModel.updatePiggyActualAmount(actualAmount, piggy.piggyId)
 
             binding.actualPrice.text = actualAmount.toString()
+            binding.inputAmount.visibility = View.INVISIBLE
+
+            showInputToast(deposit)
+            binding.piggyPicture.visibility = View.VISIBLE
+            binding.piggyPicture.setOnClickListener { view: View ->
+                view.findNavController().navigate(PiggiBankFragmentDirections
+                                        .actionPiggiBankFragmentSelf(piggyId))
+            }
+
         }
 
         setHasOptionsMenu(true)
         return binding.root
+    }
+
+    private fun showInputToast(deposit: Double) {
+        Toast.makeText(context, "Dokonano wpłaty: ${deposit} PLN", Toast.LENGTH_LONG).show()
     }
 
     private fun showDeleteAlert() {
@@ -129,8 +148,8 @@ class PiggiBankFragment : Fragment() {
         dialog?.show()
     }
 
-    private fun getSound() {
-        val mediaPlayer: MediaPlayer? = MediaPlayer.create(context, R.raw.sound)
+    private fun getSound(sound: Int) {
+        val mediaPlayer: MediaPlayer? = MediaPlayer.create(context, sound)
         mediaPlayer?.start()
     }
 
@@ -154,6 +173,8 @@ class PiggiBankFragment : Fragment() {
            R.id.delete_piggy -> showDeleteAlert()
            R.id.historyFragment -> { activity?.intent?.putExtra("isPiggy", true)
                                     NavigationUI.onNavDestinationSelected(item,
+                                    view!!.findNavController())}
+           R.id.moreFragment -> {NavigationUI.onNavDestinationSelected(item,
                                     view!!.findNavController())}
        }
 

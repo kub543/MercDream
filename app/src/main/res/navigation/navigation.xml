@@ -52,7 +52,18 @@
             app:destination="@id/listFragment"
             app:popUpTo="@id/listFragment"
             app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_piggiBankFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+        <action
+            android:id="@+id/action_piggiBankFragment_self"
+            app:destination="@id/piggiBankFragment"
+            app:popUpTo="@id/listFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.baszczyk.mercpiggibank3.more.MoreFragment"
+        android:label="MoreFragment" />
 
 
 </navigation>

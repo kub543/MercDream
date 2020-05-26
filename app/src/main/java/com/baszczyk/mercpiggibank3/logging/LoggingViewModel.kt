@@ -12,8 +12,6 @@ class LoggingViewModel(val database: PiggyDatabaseDao,
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-
-
     override fun onCleared() {
         super.onCleared()
     }
@@ -33,12 +31,6 @@ class LoggingViewModel(val database: PiggyDatabaseDao,
             user
         }
     }
-
-
-
-
-
-
 
     lateinit var users: List<String>
 
@@ -68,7 +60,4 @@ class LoggingViewModel(val database: PiggyDatabaseDao,
             password
         }
     }
-
-
-
 }
