@@ -61,13 +61,15 @@ class PiggiBankFragment : Fragment() {
             piggy = piggyBankViewModel.piggy.value!!
             mercedes = piggyBankViewModel.mercedes.value!!
 
-            binding.apply {
-                nameCar.text = mercedes.surname
-                versionNumber.text = mercedes.version
-                capasityEnginee.text = mercedes.engineCapacity
-                powerEnginee.text = mercedes.enginePower
-                actualPrice.text = piggy.actualAmount.toString()
-            }
+            binding.piggyBank = piggy
+            binding.mercedes = mercedes
+//            binding.apply {
+//                nameCar.text = mercedes.surname
+//                versionNumber.text = mercedes.version
+//                capasityEnginee.text = mercedes.engineCapacity
+//                powerEnginee.text = mercedes.enginePower
+//                actualPrice.text = piggy.actualAmount.toString()
+//            }
 
             if (piggy.actualAmount <= 0.0) {
                 binding.inputAmount.visibility = View.INVISIBLE
