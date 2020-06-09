@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.baszczyk.mercpiggibank3.ExstrasMessages
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.entities.Deposit
 import com.baszczyk.mercpiggibank3.database.entities.Mercedes
@@ -53,7 +54,7 @@ class PiggiBankFragment : Fragment() {
 
         piggyBankViewModel.piggyGet(piggyId)
 
-        activity?.intent?.putExtra("piggy", piggyId)
+        activity?.intent?.putExtra(ExstrasMessages.PIGGY_ID, piggyId)
 
         Handler().postDelayed({
             piggyBankViewModel.mercedesGet(piggyBankViewModel.piggy.value?.mercedesId!!)
@@ -173,7 +174,7 @@ class PiggiBankFragment : Fragment() {
 
        when (item.itemId) {
            R.id.delete_piggy -> showDeleteAlert()
-           R.id.historyFragment -> { activity?.intent?.putExtra("isPiggy", true)
+           R.id.historyFragment -> { activity?.intent?.putExtra(ExstrasMessages.IS_PIGGY, true)
                                     NavigationUI.onNavDestinationSelected(item,
                                     view!!.findNavController())}
            R.id.moreFragment -> {NavigationUI.onNavDestinationSelected(item,

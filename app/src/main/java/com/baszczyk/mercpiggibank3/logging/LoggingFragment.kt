@@ -13,6 +13,7 @@ import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.baszczyk.mercpiggibank3.ExstrasMessages
 import com.baszczyk.mercpiggibank3.MainActivity
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
@@ -77,7 +78,7 @@ class LoggingFragment : Fragment() {
 
                                 val userId = viewModel.currentUser.value!!.userId.toString()
                                 val intent = Intent(activity, MainActivity::class.java).apply {
-                                    putExtra("id", userId)
+                                    putExtra(ExstrasMessages.USER_ID, userId)
                                 }
                                 activity?.startActivity(intent)
                             }, 500)

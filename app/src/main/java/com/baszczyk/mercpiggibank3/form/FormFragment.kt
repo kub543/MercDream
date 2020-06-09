@@ -17,6 +17,7 @@ import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.baszczyk.mercpiggibank3.ExstrasMessages
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.entities.Mercedes
 import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
@@ -97,7 +98,7 @@ class FormFragment : Fragment() {
     private fun createPiggy() {
         val mercId = formViewModel.currentMercedes.value
         val mercSurname = mercedes.surname
-        val currentUserId = activity?.intent?.extras?.get("id").toString().toLong()
+        val currentUserId = activity?.intent?.extras?.get(ExstrasMessages.USER_ID).toString().toLong()
         piggy = PiggyBank(
             mercedesId = mercId!!, piggyName = mercSurname,
             userId = currentUserId, actualAmount = mercedes.price

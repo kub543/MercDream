@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.baszczyk.mercpiggibank3.ExstrasMessages
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentHistoryBinding
@@ -53,22 +54,22 @@ class HistoryFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val args = activity?.intent?.extras?.get("isPiggy").toString().toBoolean()
+        val args = activity?.intent?.extras?.get(ExstrasMessages.IS_PIGGY).toString().toBoolean()
         isPiggyHistory = args
 
         //optionsMenu
         if(isPiggyHistory) {
-            val piggyId = activity?.intent?.extras?.get("piggy").toString().toLong()
+            val piggyId = activity?.intent?.extras?.get(ExstrasMessages.PIGGY_ID).toString().toLong()
             historyViewModel.piggyDepositId(piggyId)
         } else if (!isPiggyHistory) {
             //drowerLayout
-            val userId = activity?.intent?.extras?.get("id").toString().toLong()
+            val userId = activity?.intent?.extras?.get(ExstrasMessages.USER_ID).toString().toLong()
             historyViewModel.allDeposits(userId)
         }
     }
 
     override fun onStop() {
         super.onStop()
-        activity?.intent?.putExtra("isPiggy", false)
+        activity?.intent?.putExtra(ExstrasMessages.IS_PIGGY, false)
     }
 }

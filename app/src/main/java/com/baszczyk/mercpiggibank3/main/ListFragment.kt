@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.baszczyk.mercpiggibank3.ExstrasMessages
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentListBinding
@@ -43,7 +44,7 @@ class ListFragment : Fragment() {
             listViewModel.onPiggyBankClicked(piggyId)
         })
         binding.piggyList.adapter = adapter
-        val currentUserId = activity?.intent?.extras?.get("id").toString().toLong()
+        val currentUserId = activity?.intent?.extras?.get(ExstrasMessages.USER_ID).toString().toLong()
         listViewModel.allPiggies(currentUserId)
 
         binding.fab.setOnClickListener { view: View ->
