@@ -18,6 +18,7 @@ import com.baszczyk.mercpiggibank3.database.entities.Mercedes
 import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentPiggiBankBinding
+import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,19 +52,23 @@ class PiggiBankFragment : Fragment() {
 
         val args = PiggiBankFragmentArgs.fromBundle(requireArguments())
         val piggyId = args.piggyId
-
-        piggyBankViewModel.piggyGet(piggyId)
+        runBlocking {
+            piggyBankViewModel.piggyGet(piggyId)
+        }
 
         activity?.intent?.putExtra(ExstrasMessages.PIGGY_ID, piggyId)
 
-        Handler().postDelayed({
-            piggyBankViewModel.mercedesGet(piggyBankViewModel.piggy.value?.mercedesId!!)
-        Handler().postDelayed({
-            piggy = piggyBankViewModel.piggy.value!!
-            mercedes = piggyBankViewModel.mercedes.value!!
 
-            binding.piggyBank = piggy
-            binding.mercedes = mercedes
+            //Handler().postDelayed({
+        runBlocking {
+            piggyBankViewModel.mercedesGet(piggyBankViewModel.piggy.value?.mercedesId!!)
+        }
+            //Handler().postDelayed({
+                piggy = piggyBankViewModel.piggy.value!!
+                mercedes = piggyBankViewModel.mercedes.value!!
+
+                binding.piggyBank = piggy
+                binding.mercedes = mercedes
 //            binding.apply {
 //                nameCar.text = mercedes.surname
 //                versionNumber.text = mercedes.version
@@ -72,14 +77,15 @@ class PiggiBankFragment : Fragment() {
 //                actualPrice.text = piggy.actualAmount.toString()
 //            }
 
-            if (piggy.actualAmount <= 0.0) {
-                binding.inputAmount.visibility = View.INVISIBLE
-                binding.piggyPicture.visibility = View.VISIBLE
-            }
+                if (piggy.actualAmount <= 0.0) {
+                    binding.inputAmount.visibility = View.INVISIBLE
+                    binding.piggyPicture.visibility = View.VISIBLE
+                }
 
-        }, 500)
+            //}, 500)
 
-        }, 500)
+            //}, 500)
+
 
         binding.addDepositButton.setOnClickListener {
            val dateTime = getCurrentDateTime().toString()

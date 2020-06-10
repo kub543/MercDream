@@ -24,6 +24,7 @@ import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentFormBinding
 import kotlinx.android.synthetic.main.fragment_form.*
+import kotlinx.coroutines.runBlocking
 
 class FormFragment : Fragment() {
 
@@ -70,17 +71,22 @@ class FormFragment : Fragment() {
 
         binding.nextButton.setOnClickListener {view: View ->
             createMercedes()
-            formViewModel.addMercedes(mercedes)
-
-            Handler().postDelayed({
+            runBlocking {
+                formViewModel.addMercedes(mercedes)
                 formViewModel.mercedesId()
-                Handler().postDelayed({
-                    createPiggy()
-                    showDialog()
-                    view.findNavController().navigate(
-                        FormFragmentDirections.actionFormFragmentToListFragment())
-                }, 500)
-            }, 500)
+                createPiggy()
+                formViewModel.addPiggyBank(piggy)
+                showDialog()
+                view.findNavController().navigate(
+                    FormFragmentDirections.actionFormFragmentToListFragment())
+            }
+
+            //Handler().postDelayed({
+
+                //Handler().postDelayed({
+
+              //  }, 500)
+           // }, 500)
 
         }
 
@@ -103,7 +109,7 @@ class FormFragment : Fragment() {
             mercedesId = mercId!!, piggyName = mercSurname,
             userId = currentUserId, actualAmount = mercedes.price
         )
-        formViewModel.addPiggyBank(piggy)
+
     }
 
     private fun createMercedes() {

@@ -16,6 +16,7 @@ import com.baszczyk.mercpiggibank3.ExstrasMessages
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentListBinding
+import kotlinx.coroutines.runBlocking
 
 class ListFragment : Fragment() {
 
@@ -45,14 +46,15 @@ class ListFragment : Fragment() {
         })
         binding.piggyList.adapter = adapter
         val currentUserId = activity?.intent?.extras?.get(ExstrasMessages.USER_ID).toString().toLong()
-        listViewModel.allPiggies(currentUserId)
-
+        runBlocking {
+            listViewModel.allPiggies(currentUserId)
+        }
         binding.fab.setOnClickListener { view: View ->
             view.findNavController().navigate(
                 ListFragmentDirections.actionListFragmentToFormFragment())
         }
 
-        Handler().postDelayed({
+        //Handler().postDelayed({
                     if (listViewModel.piggies.value?.isEmpty()!!) {
                         binding.withoutPiggies.visibility = View.VISIBLE
                         binding.addNewPiggyButton.setOnClickListener { view: View ->
@@ -86,7 +88,7 @@ class ListFragment : Fragment() {
                         )
                         binding.piggyList.layoutManager = manager
                     }
-        }, 500)
+       // }, 500)
 
         return binding.root
     }

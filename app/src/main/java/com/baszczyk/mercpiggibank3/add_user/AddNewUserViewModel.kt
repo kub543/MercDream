@@ -23,18 +23,18 @@ class AddNewUserViewModel(val database: PiggyDatabaseDao,
         }
     }
 
-    fun addNewUser(user: User) {
-        uiScope.launch {
+   suspend fun addNewUser(user: User) {
+
             insertNewUser(user)
-        }
+
     }
 
     var currentUser = MutableLiveData<User>()
 
-    fun getNewUser() {
-        uiScope.launch {
+    suspend fun getNewUser() {
+
           currentUser.value = getCurrentUser()
-        }
+
     }
 
     private suspend fun getCurrentUser(): User {

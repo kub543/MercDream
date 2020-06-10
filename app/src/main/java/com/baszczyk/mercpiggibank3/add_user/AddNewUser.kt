@@ -18,6 +18,7 @@ import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.database.entities.User
 import com.baszczyk.mercpiggibank3.databinding.AddNewUserFragmentBinding
 import kotlinx.android.synthetic.main.add_new_user_fragment.*
+import kotlinx.coroutines.runBlocking
 
 class AddNewUser : Fragment() {
 
@@ -70,17 +71,19 @@ class AddNewUser : Fragment() {
             addNewUser = binding.newUserName
             addNewUserPassword = binding.newUserPassword
             addNewUserEmail = binding.addNewUserEmail
+            runBlocking {
+                viewModel.addNewUser(createNewUser())
+                viewModel.getNewUser()
+            }
 
-            viewModel.addNewUser(createNewUser())
-            viewModel.getNewUser()
 
-            Handler().postDelayed({
+            //Handler().postDelayed({
                 Toast.makeText(
                     this.context, "dodano urzytkownika ${viewModel.currentUser.value?.name}",
                     Toast.LENGTH_LONG
                 ).show()
                 view.findNavController().navigate(R.id.action_addNewUser_to_loggingFragment)
-            }, 500)
+           // }, 500)
 
         }
 

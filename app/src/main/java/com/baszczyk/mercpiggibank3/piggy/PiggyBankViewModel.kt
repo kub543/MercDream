@@ -26,11 +26,8 @@ class PiggyBankViewModel(dataSource: PiggyDatabaseDao, application: Application)
         }
     }
 
-    fun piggyGet(id: Long) {
-        uiScope.launch {
+   suspend fun piggyGet(id: Long) {
             piggy.value = getPiggy(id)
-        }
-
     }
 
     private suspend fun getMercedes(id: Long): Mercedes {
@@ -40,10 +37,8 @@ class PiggyBankViewModel(dataSource: PiggyDatabaseDao, application: Application)
         }
     }
 
-    fun mercedesGet(id: Long) {
-        uiScope.launch {
+   suspend fun mercedesGet(id: Long) {
             mercedes.value = getMercedes(id)
-        }
     }
 
     val deposit = MutableLiveData<Deposit>()

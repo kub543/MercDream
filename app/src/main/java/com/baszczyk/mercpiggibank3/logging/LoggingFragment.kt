@@ -19,6 +19,7 @@ import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentLoggingBinding
 import kotlinx.android.synthetic.main.fragment_logging.*
+import kotlinx.coroutines.runBlocking
 
 class LoggingFragment : Fragment() {
 
@@ -27,7 +28,7 @@ class LoggingFragment : Fragment() {
     private lateinit var userName: EditText
     private lateinit var userPassword: EditText
 
-     val loggingTextWatcher = object : TextWatcher{
+    val loggingTextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {}
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -55,7 +56,7 @@ class LoggingFragment : Fragment() {
         val viewModelFactory = LoggingViewModelFactory(dataSource, application)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory)
-                    .get(LoggingViewModel::class.java)
+            .get(LoggingViewModel::class.java)
         viewModel.getAllUsersNames()
 
         userName = binding.userName
@@ -69,31 +70,31 @@ class LoggingFragment : Fragment() {
             userPassword = binding.userPassword
 
             if (isUserInDatabased()) {
-                viewModel.getUserPassword(userName.text.toString())
-                Handler().postDelayed({
-                    if (isCorrectPassword())  {
+                runBlocking {
+                    viewModel.getUserPassword(userName.text.toString())
+                }
+
+                if (isCorrectPassword()) {
+                    runBlocking {
                         viewModel.getUser(userName.text.toString())
-
-                            Handler().postDelayed({
-
-                                val userId = viewModel.currentUser.value!!.userId.toString()
-                                val intent = Intent(activity, MainActivity::class.java).apply {
-                                    putExtra(ExstrasMessages.USER_ID, userId)
-                                }
-                                activity?.startActivity(intent)
-                            }, 500)
-
-                    } else {
-                        binding.wrongDate.text = "niepoprawne hasło"
                     }
-                }, 500)
+
+                    val userId = viewModel.currentUser.value!!.userId.toString()
+                    val intent = Intent(activity, MainActivity::class.java).apply {
+                        putExtra(ExstrasMessages.USER_ID, userId)
+                    }
+                    activity?.startActivity(intent)
+
+                } else {
+                    binding.wrongDate.text = "niepoprawne hasło"
+                }
 
             } else {
                 view.findNavController().navigate(R.id.action_loggingFragment_to_addNewUser)
             }
         }
 
-        binding.newUserButton.setOnClickListener {view: View ->
+        binding.newUserButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_loggingFragment_to_addNewUser)
         }
 

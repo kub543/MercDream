@@ -20,10 +20,10 @@ class FormViewModel(val databaseDao: PiggyDatabaseDao,
         }
     }
 
-    fun addMercedes(mercedes: Mercedes) {
-        uiScope.launch{
+    suspend fun addMercedes(mercedes: Mercedes) {
+
             insertMercedes(mercedes)
-        }
+
     }
 val currentMercedes = MutableLiveData<Long?>()
 
@@ -34,10 +34,10 @@ val currentMercedes = MutableLiveData<Long?>()
        }
     }
 
-    fun mercedesId() {
-        uiScope.launch {
+   suspend fun mercedesId() {
+
             currentMercedes.value = getMercedesId()
-        }
+
     }
 
     private suspend fun insertPiggyBank(piggyBank: PiggyBank) {
@@ -46,10 +46,10 @@ val currentMercedes = MutableLiveData<Long?>()
         }
     }
 
-    fun addPiggyBank(piggyBank: PiggyBank) {
-        uiScope.launch {
+   suspend fun addPiggyBank(piggyBank: PiggyBank) {
+
             insertPiggyBank(piggyBank)
-        }
+
     }
 
 }
