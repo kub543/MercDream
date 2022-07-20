@@ -17,7 +17,7 @@ import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.database.entities.User
 import com.baszczyk.mercpiggibank3.databinding.AddNewUserFragmentBinding
-import kotlinx.android.synthetic.main.add_new_user_fragment.*
+//import kotlinx.android.synthetic.main.add_new_user_fragment.*
 import kotlinx.coroutines.runBlocking
 
 class AddNewUser : Fragment() {
@@ -38,7 +38,7 @@ class AddNewUser : Fragment() {
             val addNewUserPasswordInput = addNewUserPassword.text.toString().trim()
             val addNewUserEmailInput = addNewUserEmail.text.toString().trim()
 
-            button_create_user.isEnabled = addNewUserInput.isNotEmpty()
+            binding.buttonCreateUser.isEnabled = addNewUserInput.isNotEmpty()
                     && addNewUserPasswordInput.isNotEmpty() && addNewUserEmailInput.isNotEmpty()
         }
     }

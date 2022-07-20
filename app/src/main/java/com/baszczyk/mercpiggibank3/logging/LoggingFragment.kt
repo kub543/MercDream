@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.baszczyk.mercpiggibank3.ExstrasMessages
@@ -18,7 +19,7 @@ import com.baszczyk.mercpiggibank3.MainActivity
 import com.baszczyk.mercpiggibank3.R
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentLoggingBinding
-import kotlinx.android.synthetic.main.fragment_logging.*
+//import kotlinx.android.synthetic.main.fragment_logging.*
 import kotlinx.coroutines.runBlocking
 
 class LoggingFragment : Fragment() {
@@ -30,19 +31,15 @@ class LoggingFragment : Fragment() {
 
     val loggingTextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {}
-
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             val userInputName = userName.text.toString().trim()
             val userInputPassword = userPassword.text.toString().trim()
-
-            loggingButton.isEnabled = userInputName.isNotEmpty() && userInputPassword.isNotEmpty()
+            binding.loggingButton.isEnabled = userInputName.isNotEmpty() && userInputPassword.isNotEmpty()
         }
     }
 
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -55,7 +52,7 @@ class LoggingFragment : Fragment() {
         val dataSource = PiggyDatabase.getInstance(application).piggyDatabaseDao
         val viewModelFactory = LoggingViewModelFactory(dataSource, application)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory)
+        viewModel = ViewModelProvider(requireActivity(), viewModelFactory)
             .get(LoggingViewModel::class.java)
         viewModel.getAllUsersNames()
 
