@@ -8,14 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baszczyk.mercpiggibank3.databinding.GridViewItemBinding
 import com.baszczyk.mercpiggibank3.network.MercedesPhoto
 
-class PhotoGridAdapter : ListAdapter<MercedesPhoto, PhotoGridAdapter.MercedesPhotoViewHolder>(DiffCallback) {
-
-
+class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapter<MercedesPhoto, PhotoGridAdapter.MercedesPhotoViewHolder>(DiffCallback) {
     class MercedesPhotoViewHolder(private var binding: GridViewItemBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(mercedesPhoto: MercedesPhoto) {
             binding.photo = mercedesPhoto
-
             binding.executePendingBindings()
         }
     }
@@ -37,6 +34,13 @@ class PhotoGridAdapter : ListAdapter<MercedesPhoto, PhotoGridAdapter.MercedesPho
 
     override fun onBindViewHolder(holder: MercedesPhotoViewHolder, position: Int) {
         val mercedesPhoto = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(mercedesPhoto)
+        }
         holder.bind(mercedesPhoto)
+    }
+
+    class OnClickListener(val clickListener: (mercedesPhoto: MercedesPhoto) -> Unit) {
+        fun onClick(mercedesPhoto: MercedesPhoto) = clickListener(mercedesPhoto)
     }
 }

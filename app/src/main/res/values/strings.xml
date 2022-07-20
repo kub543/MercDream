@@ -50,5 +50,8 @@
     <string name="nie_zbierasz_jeszcze_na_adnego_mercedesa">Nie zbierasz jeszcze na żadnego mercedesa</string>
     <string name="wyloguj">Wyloguj</string>
     <string name="dodaj">Wpłać</string>
+    <string name="show_all">All</string>
+    <string name="show_rent">Rent</string>
+    <string name="show_buy_menu">Buy</string>
 
 </resources>

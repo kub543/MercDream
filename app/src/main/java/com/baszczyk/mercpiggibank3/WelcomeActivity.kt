@@ -8,8 +8,6 @@ import android.view.Window
 import android.view.WindowManager
 
 class WelcomeActivity : AppCompatActivity() {
-
-
     private val SPLASH_TIME_OUT:Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +19,10 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
+        //Thread.sleep(SPLASH_TIME_OUT)
+
         Handler().postDelayed({startActivity(
-            Intent(this,
-            LoggingActivity::class.java)
+            Intent(this, LoggingActivity::class.java)
         )
             finish()
         }, SPLASH_TIME_OUT)

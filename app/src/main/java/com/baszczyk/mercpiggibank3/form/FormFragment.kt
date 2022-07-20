@@ -23,7 +23,7 @@ import com.baszczyk.mercpiggibank3.database.entities.Mercedes
 import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
 import com.baszczyk.mercpiggibank3.database.PiggyDatabase
 import com.baszczyk.mercpiggibank3.databinding.FragmentFormBinding
-import kotlinx.android.synthetic.main.fragment_form.*
+//import kotlinx.android.synthetic.main.fragment_form.*
 import kotlinx.coroutines.runBlocking
 
 class FormFragment : Fragment() {
@@ -41,13 +41,11 @@ class FormFragment : Fragment() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             val inputPrice= price.text.toString().trim()
-            nextButton.isEnabled = inputPrice.isNotEmpty()
+            binding.nextButton.isEnabled = inputPrice.isNotEmpty()
         }
     }
 
     override fun onCreateView(
-
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {

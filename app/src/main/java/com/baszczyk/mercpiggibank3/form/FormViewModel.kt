@@ -21,9 +21,7 @@ class FormViewModel(val databaseDao: PiggyDatabaseDao,
     }
 
     suspend fun addMercedes(mercedes: Mercedes) {
-
             insertMercedes(mercedes)
-
     }
 val currentMercedes = MutableLiveData<Long?>()
 
@@ -35,9 +33,7 @@ val currentMercedes = MutableLiveData<Long?>()
     }
 
    suspend fun mercedesId() {
-
             currentMercedes.value = getMercedesId()
-
     }
 
     private suspend fun insertPiggyBank(piggyBank: PiggyBank) {
@@ -47,9 +43,7 @@ val currentMercedes = MutableLiveData<Long?>()
     }
 
    suspend fun addPiggyBank(piggyBank: PiggyBank) {
-
             insertPiggyBank(piggyBank)
-
     }
 
 }

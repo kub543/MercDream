@@ -7,6 +7,13 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
+
+enum class MercedesApiFilter(val value: String) {
+    SHOW_RENT("rent"),
+    SHOW_BUY("buy"),
+    SHOW_ALL("all")
+}
 
 private const val BASE_URL = " https://android-kotlin-fun-mars-server.appspot.com/"
 private val moshi = Moshi.Builder()
@@ -20,7 +27,7 @@ private val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFact
 
 interface MercedesApiService {
     @GET(value = "realestate")
-    fun getProperties(): Deferred<List<MercedesPhoto>>
+    fun getProperties(@Query("filter") type: String): Deferred<List<MercedesPhoto>>
 }
 
 object MercedesApi {

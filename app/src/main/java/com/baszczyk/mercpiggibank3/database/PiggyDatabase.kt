@@ -9,7 +9,7 @@ import com.baszczyk.mercpiggibank3.database.entities.Mercedes
 import com.baszczyk.mercpiggibank3.database.entities.PiggyBank
 import com.baszczyk.mercpiggibank3.database.entities.User
 
-@Database(entities = [PiggyBank::class, Mercedes::class, Deposit::class, User::class], version = 14,
+@Database(entities = [PiggyBank::class, Mercedes::class, Deposit::class, User::class], version = 16,
             exportSchema = false)
 abstract class PiggyDatabase : RoomDatabase() {
     abstract val piggyDatabaseDao: PiggyDatabaseDao
